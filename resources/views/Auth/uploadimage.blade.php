@@ -44,7 +44,7 @@
                             {{ session('success') }}
                         </div>
                     @endif
-                    <div class="card-header font-weight-bold">Upload Image and Text</div>
+                    <div class="card-header font-weight-bold"><strong>Upload Image and Text</strong></div>
 
                     <div class="card-body">
                         <form action="{{ route('Auth.uploadimage.store') }}" method="POST" enctype="multipart/form-data">
@@ -59,23 +59,22 @@
                             </div>
                             <button type="submit" class="btn btn-primary mt-3">Submit</button>
                         </form>
-                        <div class="row row-cols-1 row-cols-md-2 g-4">
-                            <div class="col-lg-6">
-                                <div class="card">
-                                    @foreach ($img as $key => $im)
+                        <div class="row mt-2">
+                            @foreach ($img as $key => $im)
+                                <div class="col-lg-6 mt-2">
+                                    <div class="card">
                                         <div class="card-body">
                                             <label>{{ $im->text }}</label><br>
                                             <img width="300" height="300" style="display: block; margin-left: auto; margin-right: auto;" src="{{ asset('images/' . $im->image) }}" alt="">
                                             <p>{{ $im->created_at->format('M d, Y H:i:s') }}</p> 
                                         </div>
-                                        @if (($key + 1) % 2 == 0)
-                                            <div class="w-100"></div> 
-                                        @endif
-                                    @endforeach
+                                    </div>
                                 </div>
-                            </div>
+                                @if (($key + 1) % 2 == 0)
+                                    <div class="w-100"></div> <!-- Break to start new row -->
+                                @endif
+                            @endforeach
                         </div>
-                        <div class="text-center"></div>
                     </div>
                 </div>
             </div>
