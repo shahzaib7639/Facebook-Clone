@@ -315,7 +315,9 @@
             @endif
         </div>
             <button class="login" type="submit">Log In</button>
-                    <a href="{{URL::to('googleLogin')}}"> <img height="80"  src="{{ asset('assets/signup.png') }}" alt=""></a>
+                    <a href="{{URL::to('googleLogin')}}"> <img height="80" class="object-fit"  src="{{ asset('assets/signup.png') }}" alt=""></a>
+                    <hr>
+                    <a href="{{URL::to('googleLogin')}}"> <img class="img-fluid"  src="{{ asset('assets/images.png') }}" alt=""></a>
                     <hr>
                     <a class="create-account" href="{{URL::to('googleLogin')}}">Create New Account</a>
                     {{-- <button type="submit" class="create-account">Create New Account</button> --}}

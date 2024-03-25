@@ -32,6 +32,8 @@ class LoginController extends Controller
         return redirect()->back()->withInput()->with('error', 'Invalid login credentials provided. Retry.');
     }
 }
+
+// Login with Google Api's 
 public function googleLogin(){
     return Socialite::driver('google')->redirect();
 
@@ -57,43 +59,32 @@ public function googleLogin(){
             session()->put('id', $is_user->id);
         }
         return redirect('/upload-image');
-        
-
-        
-        
-        // else{
-        //     $saveUser = User::where('email',$user->getEmail())->update([
-        //         'google_id' => $user->getId(),
-        //     ]);
-        //     $saveUser = User::where('email', $user->getEmail())->first();
-        // }
-        // Auth::loginUsingId($saveUser->id);
-        // return redirect()->route('Auth.uploadimage');
      }catch(Exception $th){
         dd($th->getMessage());
      }
     
  }
+ public function redirectToFacebook()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
 
- public function logout () {
-    // Logout the user
-    auth()->logout();
-
-    // Flash a session message
-    session()->flash('message', 'You have been logged out successfully.');
-
-    // Redirect to homepage or login page
-    return redirect()->route('Auth.login');
+    public function handleFacebookCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+        auth()->login($user);
+        return redirect()->intended('/');
+    }
 }
 
+
+ //Logout method
 //  public function logout () {
-//     Session::flush();
-//     // Logout the user
 //     auth()->logout();
-//     // Redirect to homepage or login page
+//     session()->flash('message', 'You have been logged out successfully.');
 //     return redirect()->route('Auth.login');
 // }
 
 
-    
-}
+
+
