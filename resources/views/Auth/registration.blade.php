@@ -193,6 +193,7 @@ hr{background: #00000026; height: 1px;}
 			<p class="mt-4"><strong class="strong">Developed By<aj> Shahzaib</aj></strong></p>
 			<div class="form-group mt-4 ">
 				<input  type="text" placeholder="John Das" id="name" class="form-control" name="name"
+				value="{{old('name')}}"
 					>
 				@if ($errors->has('name'))
 				<span class="text-danger">{{ $errors->first('name') }}</span>
@@ -200,6 +201,7 @@ hr{background: #00000026; height: 1px;}
 			</div>
 			<div class="form-group mt-4">
 				<input type="email" placeholder="Johan@example.com" id="email" class="form-control" name="email"
+				value="{{old('email')}}"
 						>
 				@if ($errors->has('email'))
 				<span class="text-danger">{{ $errors->first('email') }}</span>
@@ -207,6 +209,7 @@ hr{background: #00000026; height: 1px;}
 			</div>
 			<div class="form-group mt-4">
 				<input type="password" placeholder="Password" id="Password" class="form-control" name="password"
+				value="{{old('password')}}"
 					>
 				@if ($errors->has('password'))
 				<span class="text-danger">{{ $errors->first('password') }}</span>
@@ -221,4 +224,33 @@ hr{background: #00000026; height: 1px;}
 	</form>
 	</div>
 </body>
+<div id="errorMessages"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#signupForm').submit(function (event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Get form data
+            var formData = $(this).serialize();
+            
+            // Perform AJAX request to handle form submission
+            $.ajax({
+                type: 'POST',
+                url: 'your_signup_endpoint',
+                data: formData,
+                success: function (response) {
+                    // Handle success response
+                    // For example, redirect user to a success page
+                    window.location.href = 'success_page_url';
+                },
+                error: function (xhr, status, error) {
+                    // Handle error response
+                    // Display error message without clearing form data
+                    $('#errorMessages').html(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
 </html>

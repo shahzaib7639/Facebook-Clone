@@ -24,14 +24,25 @@
     <title>Upload Image</title>
 </head>
 <body>
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <div class="container">
-            <div class="nav">
-                <div class="inner mg">
-                    <div class="logo">
-                        <img width="200" src="{{ asset('assets/1.png') }}"> 
-                    </div>
+            <div class="nav d-flex justify-content-between align-items-center">
+                <div class="logo">
+                    <img width="200" src="{{ asset('assets/1.png') }}"> 
                 </div>
+                {{-- <div class="dropdown">
+                    <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Logout
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="dropdownMenuButton">
+                        <h4 class="h4 mb-0"><strong></strong></h4>
+                        <div class="mb-3"></div>
+                        <div class="dropdown-divider"></div> --}}
+                        <a href="{{route('logout')}}" class="dropdown-item text-danger">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout							
+                        </a>							
+                    {{-- </div> --}}
+                {{-- </div> --}}
             </div> 
         </div>
     </div>

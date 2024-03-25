@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
 
    
 
@@ -72,6 +74,26 @@ public function googleLogin(){
      }
     
  }
+
+ public function logout () {
+    // Logout the user
+    auth()->logout();
+
+    // Flash a session message
+    session()->flash('message', 'You have been logged out successfully.');
+
+    // Redirect to homepage or login page
+    return redirect()->route('Auth.login');
+}
+
+//  public function logout () {
+//     Session::flush();
+//     // Logout the user
+//     auth()->logout();
+//     // Redirect to homepage or login page
+//     return redirect()->route('Auth.login');
+// }
+
 
     
 }

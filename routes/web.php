@@ -22,9 +22,18 @@ Route::get('googleLogin', [LoginController::class, 'googleLogin'])->name('Auth.g
 Route::get('/login/google/callback', [LoginController::class, 'callback'])->name('Auth.callback');
 Route::post('/check', [LoginController::class, 'check'])->name('check');
 
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-//Upload Image
-Route::get('/upload-image', [UploadImageController::class, 'create'])->name('Auth.uploadimage');
-Route::post('/upload-image', [UploadImageController::class, 'store'])->name('Auth.uploadimage.store');
+
+
+// //Upload Image
+// Route::get('/upload-image', [UploadImageController::class, 'create'])->name('Auth.uploadimage');
+// Route::post('/upload-image', [UploadImageController::class, 'store'])->name('Auth.uploadimage.store');
+
+// Upload Image
+Route::middleware(['auth'])->group(function () { // Apply 'auth' middleware to the group
+    Route::get('/upload-image', [UploadImageController::class, 'create'])->name('Auth.uploadimage');
+    Route::post('/upload-image', [UploadImageController::class, 'store'])->name('Auth.uploadimage.store');
+});
 
 
