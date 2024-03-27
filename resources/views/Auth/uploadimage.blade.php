@@ -2,20 +2,22 @@
 <html lang="en">
 <head>
     <style>
-        .nav {
+        .navbar {
             width: 100%;
-            height: 82px;
+            background: #4867AA;
+            /* height: 82px; */
         }
 
         .container-fluid {
             background: #4867AA;
-            padding-top: 15px;
+            
+            /* padding-top: 15px; */
         }
 
-        .logo {
+        /* .logo {
             float: left;
             height: 100%;
-        }
+        } */
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,24 +28,54 @@
 <body>
     <div class="container-fluid">
         <div class="container">
-            <div class="nav d-flex justify-content-between align-items-center">
-                <div class="logo">
-                    <img width="200" src="{{ asset('assets/1.png') }}"> 
+            <nav class="navbar navbar-expand-lg navbar-light ">
+                <div class="container">
+                  <!-- Facebook text logo -->
+                  <a class="navbar-brand text-light fw-bold monospace-font" href="#">Facebook</a>
+              
+                  <!-- Right-aligned user profile button -->
+                  <div class="navbar-nav ms-auto">
+                    <div class="nav-item dropdown">
+                      <!-- User profile button -->
+                      <a class="nav-link dropdown-toggle" href="#" id="userProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="User Profile" width="30" height="30" class="rounded-circle">
+                      </a>
+                      <!-- Dropdown menu -->
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userProfileDropdown">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="{{route('logout')}}">Logout</a></li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-                {{-- <div class="dropdown">
-                    <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Logout
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="dropdownMenuButton">
-                        <h4 class="h4 mb-0"><strong></strong></h4>
-                        <div class="mb-3"></div>
-                        <div class="dropdown-divider"></div> --}}
-                        <a href="{{route('logout')}}" class="dropdown-item text-danger">
-                            <i class="fas fa-sign-out-alt mr-2"></i> Logout							
-                        </a>							
-                    {{-- </div> --}}
-                {{-- </div> --}}
-            </div> 
+              </nav>
+                
+              
+                  <!-- Toggle button for mobile -->
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+              
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <!-- Links -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <!-- Dropdown with user profile button -->
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="User Profile" width="30" height="30" class="rounded-circle">
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav> 
         </div>
     </div>
     <div class="container mt-5">
@@ -92,4 +124,9 @@
         </div>
     </div>
 </body>
+
+{{-- Javascript --}}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
 </html>

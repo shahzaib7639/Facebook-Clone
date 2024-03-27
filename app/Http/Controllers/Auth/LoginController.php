@@ -65,25 +65,46 @@ public function googleLogin(){
     
  }
  public function redirectToFacebook()
-    {
-        return Socialite::driver('facebook')->redirect();
-    }
-
-    public function handleFacebookCallback()
-    {
-        $user = Socialite::driver('facebook')->user();
-        auth()->login($user);
-        return redirect()->intended('/');
-    }
-}
-
+ {
+     return Socialite::driver('facebook')->redirect();
+ }
+ 
+ public function handleFacebookCallback()
+ {
+     try {
+         $facebookUser = Socialite::driver('facebook')->user();
+         
+         // Check if the user already exists in your database
+         $user = User::where('email', $facebookUser->getEmail())->first();
+         
+         if (!$user) {
+             // If the user doesn't exist, create a new user record
+             $user = new User();
+             $user->name = $facebookUser->getName();
+             $user->email = $facebookUser->getEmail();
+             // You may choose to generate a random password or leave it empty
+             $user->password = ''; // You may need to customize this based on your application's requirements
+             $user->save();
+         }
+ 
+         // Authenticate the user
+         auth()->login($user);
+ 
+         // Redirect the user to a dashboard or home page
+         return redirect('/dashboard');
+     } catch (\Exception $e) {
+         // Handle any exceptions that may occur
+         return redirect('/login')->with('error', 'Failed to authenticate with Facebook.');
+     }
+ }
 
  //Logout method
-//  public function logout () {
-//     auth()->logout();
-//     session()->flash('message', 'You have been logged out successfully.');
-//     return redirect()->route('Auth.login');
-// }
+ public function logout () {
+    auth()->logout();
+    session()->flash('message', 'You have been logged out successfully.');
+    return redirect()->route('Auth.login');
+}
+}
 
 
 

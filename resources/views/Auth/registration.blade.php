@@ -59,9 +59,9 @@ a{text-decoration: none; color:#9cb4d8;}
 	padding:3px 6px;
 	cursor: pointer;
 }
-[value]:hover{
+/* [value]:hover{
 	background: #365899;
-}
+} */
 .main{
 	color:#000;
 	min-width: 900px;
