@@ -39,7 +39,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // Route::get('/upload-image', [UploadImageController::class, 'create'])->name('Auth.uploadimage');
 // Route::post('/upload-image', [UploadImageController::class, 'store'])->name('Auth.uploadimage.store');
 
-// Upload Image
+// Apply middleware this routes
 Route::middleware(['auth'])->group(function () { // Apply 'auth' middleware to the group
     Route::get('/upload-image', [UploadImageController::class, 'create'])->name('Auth.uploadimage');
     Route::post('/upload-image', [UploadImageController::class, 'store'])->name('Auth.uploadimage.store');

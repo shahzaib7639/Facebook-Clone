@@ -59,9 +59,6 @@ a{text-decoration: none; color:#9cb4d8;}
 	padding:3px 6px;
 	cursor: pointer;
 }
-/* [value]:hover{
-	background: #365899;
-} */
 .main{
 	color:#000;
 	min-width: 900px;
@@ -229,24 +226,16 @@ hr{background: #00000026; height: 1px;}
 <script>
     $(document).ready(function () {
         $('#signupForm').submit(function (event) {
-            event.preventDefault(); // Prevent default form submission
-            
-            // Get form data
+            event.preventDefault();
             var formData = $(this).serialize();
-            
-            // Perform AJAX request to handle form submission
             $.ajax({
                 type: 'POST',
                 url: 'your_signup_endpoint',
                 data: formData,
                 success: function (response) {
-                    // Handle success response
-                    // For example, redirect user to a success page
                     window.location.href = 'success_page_url';
                 },
                 error: function (xhr, status, error) {
-                    // Handle error response
-                    // Display error message without clearing form data
                     $('#errorMessages').html(xhr.responseText);
                 }
             });

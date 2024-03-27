@@ -20,14 +20,11 @@ class RegisterController extends Controller
             'password' => ['required']
         ]);
         $input = $request->all();
-
-        
         User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => Hash::make($input['password'])
         ]);
-
         return redirect()->route('Auth.login');
     }
 }

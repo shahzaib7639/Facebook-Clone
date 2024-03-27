@@ -19,7 +19,6 @@
         .logo {
             height: 100%;
         }
-
         .logout-btn {
             color: white;
             border-radius: 50%;
@@ -27,7 +26,6 @@
             background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
             border: none;
         }
-
         .dropdown-menu {
             border-radius: 50%;
             overflow: hidden;
@@ -36,12 +34,10 @@
             width: 200px; /* Adjust width to make it circular */
             padding: 0; /* Remove default padding */
         }
-
         .dropdown-item {
             border-radius: 0; /* Remove rounded corners for each item */
         }
-
-        .dropdown-menu li:last-child a {
+    .dropdown-menu li:last-child a {
             border-bottom: none; /* Remove bottom border for last item */
         }
     </style>

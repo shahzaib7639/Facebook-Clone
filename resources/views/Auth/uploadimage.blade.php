@@ -5,19 +5,10 @@
         .navbar {
             width: 100%;
             background: #4867AA;
-            /* height: 82px; */
         }
-
         .container-fluid {
             background: #4867AA;
-            
-            /* padding-top: 15px; */
         }
-
-        /* .logo {
-            float: left;
-            height: 100%;
-        } */
     </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,17 +23,13 @@
                 <div class="container">
                   <!-- Facebook text logo -->
                   <a class="navbar-brand text-light fw-bold monospace-font" href="#">Facebook</a>
-              
-                  <!-- Right-aligned user profile button -->
                   <div class="navbar-nav ms-auto">
                     <div class="nav-item dropdown">
-                      <!-- User profile button -->
                       <a class="nav-link dropdown-toggle" href="#" id="userProfileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://www.w3schools.com/bootstrap4/img_avatar3.png" alt="User Profile" width="30" height="30" class="rounded-circle">
                       </a>
-                      <!-- Dropdown menu -->
                       <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userProfileDropdown">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">{{Auth()->user()->name}}</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-danger" href="{{route('logout')}}">Logout</a></li>
                       </ul>
@@ -50,15 +37,11 @@
                   </div>
                 </div>
               </nav>
-                
-              
-                  <!-- Toggle button for mobile -->
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
               
                   <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <!-- Links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <!-- Dropdown with user profile button -->
                       <li class="nav-item dropdown">
@@ -114,7 +97,7 @@
                                     </div>
                                 </div>
                                 @if (($key + 1) % 2 == 0)
-                                    <div class="w-100"></div> <!-- Break to start new row -->
+                                    <div class="w-100"></div> 
                                 @endif
                             @endforeach
                         </div>
